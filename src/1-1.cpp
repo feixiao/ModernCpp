@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 	std::cout << "LLONG_MIN = " << LLONG_MIN << std::endl;
 	std::cout << "ULLONG_MAX = " << ULLONG_MAX << std::endl;
 	
-	// 使用类模板方法
+	// [推荐做法] 使用类模板方法
 	std::cout << "std::numeric_limits<long long>::max() = " 
 		<< std::numeric_limits<long long>::max() << std::endl;
 	std::cout << "std::numeric_limits<long long>::min() = " 
