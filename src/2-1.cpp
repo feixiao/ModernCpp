@@ -1,9 +1,16 @@
+#include <cstdio>
+
+
 namespace S1 {
-	void foo() {}
+	void foo() {
+		printf("%s\n", __FUNCTION__);
+	}
 }
 
 namespace S2 {
-	void foo() {}
+	void foo() {
+		printf("%s\n", __FUNCTION__);
+	}
 }
 
 using namespace S1;

@@ -35,7 +35,8 @@ include_directories(
 )
 
 set(source_01  ${CMAKE_CURRENT_SOURCE_DIR}/src/1-1.cpp)
-
+set(source_02  ${CMAKE_CURRENT_SOURCE_DIR}/src/2-1.cpp)
+set(source_0202  ${CMAKE_CURRENT_SOURCE_DIR}/src/2-2.cpp)
 
 ##############################################################################
 
@@ -65,3 +66,5 @@ endif()
 
 
 add_executable(ex01 ${source_01})
+add_executable(ex02-01 ${source_02})
+add_executable(ex02-02 ${source_0202})
