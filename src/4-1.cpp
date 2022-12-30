@@ -12,6 +12,6 @@ int main()
 {
 	f<x>();		// N为const int类型
 	f<(x)>();	// N为const int&类型
-    f<y>();		// 编译错误
+    // f<y>();		// 编译错误
 	f<(y)>();	// N为int&类型
 }
