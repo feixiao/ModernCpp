@@ -18,6 +18,18 @@ public:
 		other.pool_ = nullptr;
 	}
 
+
+	BigMemoryPool& operator=(BigMemoryPool&& other)
+	{
+		std::cout << "move(operator=) big memory pool." <<std::endl;
+		if (pool_ != nullptr) {
+			delete[] pool_;
+		}
+		pool_ = other.pool_;
+		other.pool_ = nullptr;
+		return *this;
+	}
+
 	BigMemoryPool(const BigMemoryPool& other) : pool_(new char[PoolSize])
 	{
 		std::cout << "copy big memory pool." << std::endl;
@@ -29,10 +41,26 @@ private:
 	char *pool_;
 };
 
+
+
+BigMemoryPool get_pool(const BigMemoryPool& pool)
+{
+	return std::move(pool);
+}
+
+
+BigMemoryPool make_pool()
+{
+	BigMemoryPool pool;
+	return get_pool(pool);
+}
+
+
 int main()
 {
 	auto start = std::chrono::high_resolution_clock::now();
-	for (int i = 0; i < 1000000; i++) {
+	uint32_t count = 1;
+	for (int i = 0; i < count; i++) {
 		BigMemoryPool my_pool = make_pool();
 	}
 	auto end = std::chrono::high_resolution_clock::now();
