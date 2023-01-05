@@ -40,6 +40,7 @@ set(source_0202  ${CMAKE_CURRENT_SOURCE_DIR}/src/2-2.cpp)
 set(source_03  ${CMAKE_CURRENT_SOURCE_DIR}/src/3-1.cpp)
 set(source_04  ${CMAKE_CURRENT_SOURCE_DIR}/src/4-1.cpp)
 set(source_06_05  ${CMAKE_CURRENT_SOURCE_DIR}/src/6-5.cpp)
+set(source_06_08  ${CMAKE_CURRENT_SOURCE_DIR}/src/6-8.cpp)
 ##############################################################################
 
 #if (CMAKE_BUILD_TYPE STREQUAL "")
@@ -74,3 +75,4 @@ add_executable(ex02-02 ${source_0202})
 add_executable(ex03 ${source_03})
 add_executable(ex04 ${source_04})
 add_executable(ex06_05 ${source_06_05})
+add_executable(ex06_08 ${source_06_08})
