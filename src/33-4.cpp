@@ -1,3 +1,10 @@
+// ============================================================================
+// 【说明】：演示 C++20 协程等待体（Awaitable）的三个核心接口约定：ready, suspend, resume。
+// 【重点】：
+//   1. await_ready()：判断操作是否已完成、是否需要挂起
+//   2. await_suspend(handle)：协程挂起时的回调句柄保存
+//   3. await_resume()：协程恢复时返回最终结果数据
+// ============================================================================
 class awaitable_string : public std::string {
 public:
 	using std::string::string;

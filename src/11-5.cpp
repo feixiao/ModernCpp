@@ -1,3 +1,10 @@
+// ============================================================================
+// 【说明】：演示利用 placement new 与显式析构在非受限联合体中安全切换活跃成员。
+// 【重点】：
+//   1. 切换到 string：new(&u.x3) std::string("hello world"); 离开时显式 u.x3.~basic_string();
+//   2. 切换到 vector：new(&u.x4) std::vector<int>; 离开时显式 u.x4.~vector();
+//   3. 这是 std::variant 底层实现机制的基础原理
+// ============================================================================
 #include <iostream>
 #include <string>
 #include <vector>

@@ -1,3 +1,10 @@
+// ============================================================================
+// 【说明】：演示 C++20 在 auto 变量声明、decltype(auto) 以及函数返回值处使用概念约束。
+// 【重点】：
+//   1. IntegerType auto i2 = 11;（合法推导整型）
+//   2. IntegerType auto i1 = 5.2;（浮点数不满足概念触发编译错误）
+//   3. auto bar2 = []() -> IntegerType auto { return 10; };（Lambda 返回值受约束）
+// ============================================================================
 template <class C>
 concept IntegerType = std::is_integral_v<C>;
 

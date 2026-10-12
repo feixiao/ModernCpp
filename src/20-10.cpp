@@ -1,3 +1,10 @@
+// ============================================================================
+// 【说明】：演示为自定义类扩展 std::tuple_size、tuple_element 与非成员 get 函数以接入结构化绑定（类 tuple 协议）。
+// 【重点】：
+//   1. 特化 std::tuple_size<BindTest3> 与 std::tuple_element<Idx, BindTest3>
+//   2. 提供全局 template<size_t Idx> auto& get(BindTest3&)
+//   3. 允许私有成员或跨层继承的复杂类通过定制协议实现结构化绑定
+// ============================================================================
 #include <iostream>
 #include <tuple>
 

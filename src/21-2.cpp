@@ -1,3 +1,9 @@
+// ============================================================================
+// 【说明】：演示条件 noexcept 在泛型 swap 函数根据成员是否 noexcept 进行自适应传递。
+// 【重点】：
+//   1. swap(...) noexcept(noexcept(...)) 结合 std::is_nothrow_move_constructible
+//   2. 只有内部移动和赋值都不抛异常时，外部 swap 才承诺 noexcept，提升 STL 容器操作安全性
+// ============================================================================
 #include <iostream>
 #include <type_traits
 struct X {

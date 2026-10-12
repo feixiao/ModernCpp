@@ -1,3 +1,9 @@
+// ============================================================================
+// 【说明】：演示自定义协程承诺对象（promise_type）实现自定义整数生成器。
+// 【重点】：
+//   1. 协程返回类型 my_int_generator 内部嵌套定义 struct promise_type
+//   2. 实现 get_return_object, initial_suspend, final_suspend, yield_value 等生命周期钩子
+// ============================================================================
 #include <experimental/resumable>
 using namespace std::experimental;
 struct my_int_generator {

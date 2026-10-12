@@ -1,3 +1,10 @@
+// ============================================================================
+// 【说明】：演示 C++11 新增的长整型类型 long long 与 unsigned long long 的数值范围获取方式。
+// 【重点】：
+//   1. 传统的 C 宏方法：LLONG_MAX, LLONG_MIN, ULLONG_MAX
+//   2. C++ 推荐方式：std::numeric_limits<long long>::max()/min() 类模板方法
+//   3. 使用 printf 格式化输出长整型占位符（%lld 和 %llu）
+// ============================================================================
 #include <iostream>
 #include <limits>
 #include <cstdio>
