@@ -8,6 +8,7 @@
 #include <string>
 
 struct C {
+	// 构造函数接收 std::initializer_list<std::string>，支持初始化列表语法
 	C(std::initializer_list<std::string> a)
 	{
 		for (const std::string* item = a.begin(); item != a.end(); ++item) {
