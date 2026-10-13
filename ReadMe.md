@@ -126,28 +126,21 @@ diff -u src/21-1.cpp src/21-2.cpp
 
 ### 使用 CMake 构建已配置示例
 
-根目录的 `CMakeLists.txt` 使用 C++17，目前只配置了 7 个目标：
+根目录的 `CMakeLists.txt` 已升级为 C++20，统一收录了全部 157 个可独立编译运行的示例目标（排除了预期编译失败的反例及无 `main()` 的代码片段）。
 
-| 目标 | 源文件 |
-|---|---|
-| `ex01` | `src/1-1.cpp` |
-| `ex02-01` | `src/2-1.cpp` |
-| `ex02-02` | `src/2-2.cpp` |
-| `ex03` | `src/3-1.cpp` |
-| `ex04` | `src/4-1.cpp` |
-| `ex06_05` | `src/6-5.cpp` |
-| `ex06_08` | `src/6-8.cpp` |
-
-必须使用独立构建目录；项目会拒绝在源码目录内构建：
+目标命名规则为 `ex<章节两位>_<序号两位>`，例如 `src/20-2.cpp` 对应目标 `ex20_02`，同时兼容旧版别名（如 `ex01`, `ex02-01` 等）：
 
 ```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-cmake --build build --target ex01
-./build/ex01
+# 1. 生成构建配置（必须使用独立构建目录）
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+# 2. 一键编译全部 157 个示例目标
+cmake --build build -j
+
+# 3. 运行指定示例
+./build/ex20_02
+./build/ex06_05
 ```
-
-当前 CMake 配置只处理 Linux 和 macOS。
-
 ### 单独编译任意示例
 
 学习 `src` 时，推荐直接编译单个文件。C++20 可以覆盖多数示例使用的语言特性：
