@@ -14,7 +14,9 @@ public:
 
 class Derived : public Base {
 public:
+	// 使用 override 说明符可以让编译器在虚函数签名不匹配时报错，避免静默隐藏 Bug
 	virtual void sone_func() override {}
+	// 编译器会报错，提示 sone_func 并没有正确重写基类的虚函数 some_func
 	virtual void foo(int &x) override {}
 	virtual void bar() override {}
 	virtual void baz() override {}

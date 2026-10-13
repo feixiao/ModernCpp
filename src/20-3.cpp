@@ -14,7 +14,8 @@ struct BindTest {
 
 int main()
 {
-	BindTest bt;
+	BindTest bt; // 创建 BindTest 结构体实例
+	// 使用结构化绑定解包 bt 的非静态公有成员，x 和 y 自动获得对应字段的类型与值
 	auto[x, y] = bt;
 	std::cout << "x=" << x << " y=" << y << std::endl;
 }

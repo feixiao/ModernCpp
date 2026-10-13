@@ -12,10 +12,11 @@ public:
 
 class Derived : public Base {
 public:
+	// 声明 foo(int x) 为 final，禁止在派生类中被进一步重写
 	void foo(int x) final {};
 };
 
 class Derived2 : public Derived {
 public:
-	void foo(int x) {};
+	void foo(int x) {}; // 编译错误，Derived 中的 foo(int x) 已经被声明为 final
 };

@@ -13,10 +13,12 @@ int int_array[] = { 0, 1, 2, 3, 4, 5 };
 
 int main()
 {
+	// 遍历 std::map 的键值对元素
 	for (const auto &e : index_map) {
+		// e.first 是键，e.second 是值
 		std::cout << "key=" << e.first << ", value=" << e.second << std::endl;
 	}
-	
+	// 遍历数组 int_array 的元素
 	for (auto e : int_array) {
 		std::cout << e << std::endl;
 	}

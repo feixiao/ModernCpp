@@ -14,6 +14,7 @@ auto return_multiple_values()
 
 int main()
 {
+	// 使用结构化绑定解包返回的 tuple，x 和 y 自动获得对应字段的类型与值
 	auto[x, y] = return_multiple_values();
 	std::cout << "x=" << x << " y=" << y << std::endl;
 }

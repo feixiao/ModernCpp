@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 
+// 派生类 MyStringWithIndex 继承自 std::string，并手写了非平凡构造函数以初始化基类和子类字段
 class MyStringWithIndex : public std::string {
 public:
 	MyStringWithIndex(const std::string& str, int idx) : std::string(str), index_(idx) {}

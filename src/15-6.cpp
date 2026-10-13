@@ -14,6 +14,7 @@ struct Y {
 };
 
 int main() {
+	// 检查 X 和 Y 是否为聚合类型
 	std::cout << std::boolalpha 
 		<< "std::is_aggregate_v<X> : " << std::is_aggregate_v<X> << std::endl
 		<< "std::is_aggregate_v<Y> : " << std::is_aggregate_v<Y> << std::endl;

@@ -15,6 +15,7 @@ public:
 class Derived : public Base {
 public:
 	virtual void sone_func() {}
+	// foo(int &x) 并没有正确重写基类的 foo(int x)，而是新声明了一个普通函数
 	virtual void foo(int &x) {}
 	virtual void bar() {}
 	virtual void baz() {}

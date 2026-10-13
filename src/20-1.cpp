@@ -7,6 +7,7 @@
 #include <iostream>
 #include <tuple>
 
+// 返回多个值的函数，返回类型为 std::tuple<int, int>
 std::tuple<int, int> return_multiple_values()
 {
 	return std::make_tuple(11, 7);

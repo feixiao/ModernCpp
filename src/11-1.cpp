@@ -16,10 +16,12 @@ int main()
 {
 	U u;
 	u.x1 = 5;
-	std::cout << u.x1 << std::endl;
-	std::cout << u.x2 << std::endl;
+	// 此时联合体的内存中存储的是 int x1 的值，访问 x2 会得到与该内存位模式对应的浮点数
+	std::cout << u.x1 << std::endl; // 输出 int x1 的值
+	std::cout << u.x2 << std::endl; // 输出与 int x1 内存位模式对应的浮点数
 
 	u.x2 = 5.0;
-	std::cout << u.x1 << std::endl;
-	std::cout << u.x2 << std::endl;
+	// 此时联合体的内存中存储的是 float x2 的值，访问 x1 会得到与该内存位模式对应的整数
+	std::cout << u.x1 << std::endl; // 输出与 float x2 内存位模式对应的整数
+	std::cout << u.x2 << std::endl; // 输出 float x2 的值
 }
