@@ -50,6 +50,7 @@ private:
 
 
 
+// 按值返回对象，可能触发移动构造函数，从而避免深拷贝，提高性能。
 BigMemoryPool get_pool(const BigMemoryPool& pool)
 {
 	return std::move(pool);

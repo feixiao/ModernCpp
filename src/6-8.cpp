@@ -8,12 +8,16 @@
 #include <iostream>
 #include <string>
 
+// 显示类型信息的辅助函数
 template<class T>
 void show_type(T t)
 {
 	std::cout << typeid(t).name() << std::endl;
 }
 
+// 完美转发函数模板
+// 完美转发是指函数模板能够将其参数以原有的值类别（左值或右值）完美地转发给另一个函数。
+// 相当于传统C++的好处是可以避免不必要的拷贝，提高性能。
 template<class T>
 void perfect_forwarding(T &&t)
 {

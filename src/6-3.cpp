@@ -8,12 +8,17 @@
 
 class X {
 public:
+	// 默认构造函数
 	X() { std::cout << "X ctor" << std::endl; }
+	// 拷贝构造函数
 	X(const X&x) { std::cout << "X copy ctor" << std::endl; }
 	~X() { std::cout << "X dtor" << std::endl; }
 	void show() { std::cout << "show X" << std::endl; }
 };
 
+
+// 按值返回局部对象通常是合理且惯用的设计：编译器可进行 NRVO；
+// 若未进行 NRVO，C++11 起通常会隐式移动，而不一定发生拷贝。
 X make_x()
 {
 	X x1;
@@ -22,6 +27,7 @@ X make_x()
 
 int main()
 {
+	// 使用右值引用接管临时对象, 延长其生命周期, 直到 x2 作用域结束
 	X &&x2 = make_x();
 	x2.show();
 }
