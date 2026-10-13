@@ -12,7 +12,9 @@ public:
 
 class Derived : public Base {
 public:
+	// 派生类中引入基类的 foo(int) 函数，避免被派生类的 foo(const char*) 隐藏
 	using Base::foo;
+	// 派生类中定义了 foo(const char*)，如果不使用 using Base::foo;，基类的 foo(int) 将被隐藏
 	void foo(const char *) {}
 };
 

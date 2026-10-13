@@ -7,6 +7,7 @@
 class Base {
 //	void foo(long &);
 public:
+	// 基类中删除了 foo(long &) 函数，派生类通过 using Base::foo 导入基类接口时，依然保留 delete 效果
 	void foo(long &) = delete;	// 删除foo(long &)函数
 	void foo(int) {}
 };
@@ -20,6 +21,7 @@ public:
 int main()
 {
 	Derived d;
+	// d.foo(5L); // 编译错误，调用被删除的 foo(long &) 函数
 	d.foo("hello");
 	d.foo(5);
 }

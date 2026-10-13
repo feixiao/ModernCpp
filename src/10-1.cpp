@@ -9,6 +9,15 @@ class Trivial
 {
 	int i;
 public:
+	// 手写空构造函数会破坏类的平凡性，即使函数体为空也不例外
+	// 手写空构造函数，即使函数体为空，也会破坏类的平凡性
+	// 这里手写了空构造函数 Trivial() {}，因此类 Trivial 不再是平凡类，即 std::is_trivial_v<Trivial> 将为 false。
+	// 通过删除手写空构造函数或使用 = default 可以恢复类的平凡性
+	// 平凡类有什么用？
+	//   1. 可以使用 memcpy 等底层优化手段进行高效拷贝
+	//   2. 可以保证类的默认构造函数是编译器生成的，避免额外开销
+	//   3. 有助于与 C 语言接口的兼容性
+	
 	Trivial(int n) : i(n), j(n) {}
 	Trivial() {}
 	int j;
@@ -20,5 +29,5 @@ int main()
 	Trivial b;
 	b = a;
 	std::cout << "std::is_trivial_v<Trivial>   : " 
-<< std::is_trivial_v<Trivial> << std::endl;
+	<< std::is_trivial_v<Trivial> << std::endl;
 }
