@@ -19,7 +19,7 @@ struct D : B
 	short c;
 	auto operator <=> (const D&) const = default;
 };
-
+	
 int main()
 {
     D x1, x2;

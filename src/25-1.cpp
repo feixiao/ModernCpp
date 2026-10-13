@@ -12,5 +12,7 @@ thread_local X a;
 
 int main()
 {
+	// main 函数中也可以声明线程局部变量，保证每个线程拥有独立的副本
+	// 声明线程局部变量 b，保证每个线程拥有独立的副本
 	thread_local X b;
 }

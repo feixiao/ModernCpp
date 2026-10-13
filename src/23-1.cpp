@@ -32,6 +32,8 @@ widget<T>* make_widget(T)
 
 int main()
 {
+	// 调用 make_widget 创建不同类型的 widget 实例，观察重载选择机制
+	// 传入整型 0，会匹配模板版本 widget<int>
 	auto w1 = make_widget(0);
-	auto w2 = make_widget(nullptr);
+	auto w2 = make_widget(nullptr); // 传入 nullptr，会匹配特化版本 widget<std::nullptr_t>
 }

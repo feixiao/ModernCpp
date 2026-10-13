@@ -8,6 +8,7 @@
 #include <chrono>
 #include <future>
 
+// 使用 std::future 演示协程的异步返回与等待机制
 using namespace std::chrono_literals;
 
 std::future<int> foo()
@@ -21,6 +22,7 @@ std::future<std::future<int>> bar()
 {
 	std::cout << "call bar\n";
 	std::cout << "before foo\n";
+	// 调用 foo 协程并等待其完成，获取返回值
 	auto n = co_await std::async(foo);	// 挂起点
 	std::cout << "after foo\n";
 	co_return n;

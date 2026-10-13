@@ -9,8 +9,10 @@
 #include <thread>
 #include <mutex>
 
+// 全局输出锁，保证多线程打印时不会交错
 std::mutex g_out_lock;
 
+// RefCount 结构体用于演示线程局部对象的构造、引用计数增加以及析构过程
 struct RefCount {
 	RefCount(const char* f) : i(0), func(f) {
 		std::lock_guard<std::mutex> lock(g_out_lock);
@@ -27,7 +29,8 @@ struct RefCount {
 	}
 
 	void inc()
-	{
+	{	
+		// 打印当前线程的引用计数增加信息
 		std::lock_guard<std::mutex> lock(g_out_lock);
 		std::cout << std::this_thread::get_id()
 			<< "|" << func
@@ -43,6 +46,7 @@ RefCount *lp_ptr = nullptr;
 void foo(const char* f)
 {
 	std::string func(f);
+	// 声明线程局部变量 tv，保证每个线程拥有独立的 RefCount 实例
 	thread_local RefCount tv(func.append("#foo").c_str());
 	tv.inc();
 }
@@ -50,6 +54,7 @@ void foo(const char* f)
 void bar(const char* f)
 {
 	std::string func(f);
+	// 声明线程局部变量 tv，保证每个线程拥有独立的 RefCount 实例
 	thread_local RefCount tv(func.append("#bar").c_str());
 	tv.inc();
 }
@@ -80,11 +85,16 @@ void threadfunc3()
 
 int main()
 {
+	// 启动多个线程，观察每个线程的 RefCount 对象的构造、引用计数增加以及析构过程
 	std::thread t1(threadfunc1);
 	std::thread t2(threadfunc2);
 	std::thread t3(threadfunc3);
 	
+
+	// 等待所有线程完成，确保每个线程的 RefCount 对象都能正确析构
 	t1.join();
 	t2.join();
 	t3.join();
+
+	// 所有线程完成后，主线程的 RefCount 对象也会在程序结束时析构
 }
