@@ -11,5 +11,7 @@ int main()
 {
     int y = 0;
     static int z = 0;
+    // 尝试在捕获列表中显式捕获全局变量 x、局部变量 y 和静态局部变量 z
+    // 下面的 lambda 捕获列表会导致编译错误，因为 x 和 z 不允许显式捕获
     auto foo = [x, y, z] {};
 }

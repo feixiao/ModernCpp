@@ -9,6 +9,7 @@
 int main()
 {
     int x = 5, y = 8;
+    // x 按值捕获，&y 按引用捕获，mutable 允许修改闭包内部的 x
     auto foo = [x, &y]() mutable {
         x += 1;
         y += 2;

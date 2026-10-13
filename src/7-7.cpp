@@ -16,7 +16,9 @@ public:
 
     void test()
     {
+        // 使用 [this] 捕获当前对象指针，Lambda 内部可以访问成员函数和成员变量
         auto foo = [this] { 
+            
             print(); 
             x = 5; 
         };

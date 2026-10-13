@@ -10,6 +10,7 @@
 int main()
 {
     int x = 5;
+    // 按值捕获局部变量 x，在闭包对象生成时保存副本
     auto foo = [x](int y)->int { return x * y; };
     std::cout << foo(8) << std::endl;
 }

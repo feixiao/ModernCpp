@@ -11,6 +11,7 @@ int main()
 {
     int y = 2;
     static int z = 3;
+    // 局部变量 y 需要放入捕获列表按值捕获，而全局变量 x 和静态变量 z 无需捕获
     auto foo = [y] { return x + y + z; };
     std::cout << foo() << std::endl;
 }

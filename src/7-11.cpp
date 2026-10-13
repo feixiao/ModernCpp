@@ -17,6 +17,7 @@ class Work
     Work() : value(42) {}
     std::future<int> spawn()
     {
+        // 使用 [=] 捕获成员变量 value，实际上是隐式捕获了 this 指针，可能导致悬垂引用问题
         return std::async([=]() -> int { return value; });
     }
 };
@@ -58,7 +59,10 @@ std::future<int> foo()
 
 int main()
 {
+    // 调用 foo() 获取异步任务的 future 对象
+    // 异步任务会在后台执行，访问 Work 对象的 value 成员
+    // 由于 C++11 中 [=] 捕获隐式捕获了 this 指针，如果 Work 对象在 foo() 返回后析构，可能导致悬垂引用问题
     std::future<int> f = foo();
     f.wait();
-  std::cout << "f.get() = " << f.get() << std::endl;
+    std::cout << "f.get() = " << f.get() << std::endl;
 }
